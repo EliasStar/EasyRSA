@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>EasyRSA</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="index.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <link rel="stylesheet" href="index.css">
+        <link rel="shortcut icon" href="img/fav.ico" type="image/x-icon">
+    </head>
+
+    <body>
+        <div id="header">
+            <h1 id="title"><img id="rsa" src="img/rsa.svg" alt="RSA"> einfach erklärt!</h1>
+            <p id="subtitle">Eine Demo des RSA-Verfahrens für 1-2 Personen.</p>
+            <img id="icon" src="img/encryption.png" alt="Icon">
+        </div>
+
+        <div id="start">
+            <button id="start-button" onclick="next(this)">Start</button>
+        </div>
+
+        <div id="container">
+            <span id="left" class="item" hidden>
+                <div class="content">
+                    <h1>Alice</h1>
+                    <div id="stage-0" hidden>
+                        <p>wählt zwei verschiedene Primzahlen:</p>
+                        <p>\(p =\) <input id="p-field" type="number" min="2" max="100" onchange="getInput(this)">
+                        </p>
+                        <p>\(q =\) <input id="q-field" type="number" min="2" max="100" onchange="getInput(this)"></p>
+
+                        <button class="button float-right" onclick="next(this)"><img src="img/check.svg" alt="Weiter"></button>
+                        <br>
+                    </div>
+
+                    <div id="stage-1" hidden>
+                        <p>Nun errechnet sie:</p>
+                        <p id="n-calc"></p>
+                        <p id="m-value"></p>
+                        <button class="button float-right" onclick="next(this)"><img src="img/check.svg" alt="Weiter"></button>
+                        <br>
+                    </div>
+
+                    <div id="stage-2" hidden>
+                        <p>Außerdem braucht sie noch eine Zahl welche keinen gemeinsamen Teiler mit \(m\) hat:</p>
+                        <p>\(a =\) <input id="a-field" type="number" min="2" max="100" onchange="getInput(this)"></p>
+
+                        <button class="button float-right" onclick="next(this)"><img src="img/check.svg" alt="Weiter"></button>
+                        <br>
+                    </div>
+
+                    <div id="stage-7" hidden>
+                        <p>Jetzt ermittelt sie:</p>
+                        <p id="b-value"></p>
+
+                        <button class="button float-right" onclick="next(this)"><img src="img/check.svg" alt="Weiter"></button>
+                        <br>
+                    </div>
+
+                    <div id="stage-8" hidden>
+                        <p>Zuletzt entschlüsselt sie Bob's Nachricht:</p>
+                        <p id="x-value"></p>
+
+                        <button class="button float-right" onclick="next(this)"><img src="img/check.svg" alt="Weiter"></button>
+                        <br>
+                    </div>
+                </div>
+                <img class="image" src="img/alice.png" alt="Picture of Alice">
+                <span id="dialog">
+                    <div id="arrow"></div>
+                    <p id="text"></p>
+                </span>
+            </span>
+
+            <span id="center" class="item" hidden>
+                <div class="content">
+                    <h1>Öffentlichkeit</h1>
+                    <div class="top-space">
+                        <p>sieht nur:</p>
+                    </div>
+
+                    <span id="stage-3" hidden>
+                        <div class="middle-space">
+                            <p id="n-value"></p>
+                        </div>
+                        <p id="a-value"></p>
+                        <br>
+                        <button class="button" onclick="next(this)"><img src="img/check.svg" alt="Weiter"></button>
+                    </span>
+
+                    <span id="stage-6" hidden>
+                        <p id="y-value"></p>
+                        <br>
+                        <button class="button" onclick="next(this)"><img src="img/check.svg" alt="Weiter"></button>
+                    </span>
+
+                    <span id="stage-9" hidden>
+                        <div class="bottom-space"></div>
+                        <p> Dadurch kann nur Alice die Nachricht von Bob entschlüsselen.</p>
+                    </span>
+                </div>
+                <img id="center-image" class="image" src="img/hacker.png" alt="Funny picture of a hacker">
+            </span>
+
+            <span id="right" class="item" hidden>
+                <div class="content">
+                    <h1>Bob</h1>
+                    <div class="top-space">
+                        <p>will Alice eine Nachricht schicken.</p>
+                    </div>
+
+                    <div id="stage-4" class="middle-space" hidden>
+                        <p>Diese ist eine Zahl, welche kleiner als \(n\) sein soll:</p>
+                        <p>\(x =\) <input id="x-field" type="number" min="2" max="100" onchange="getInput(this)">
+                        </p>
+                        <button class="button float-left" onclick="next(this)"><img src="img/check.svg" alt="Weiter"></button>
+                    </div>
+
+                    <div id="stage-5" hidden>
+                        <p>Danach verschlüsselt er sie:</p>
+                        <p id="y-calc"></p>
+                        <button class="button float-left" onclick="next(this)"><img src="img/check.svg" alt="Weiter"></button>
+                    </div>
+                </div>
+                <img class="image" src="img/bob.png" alt="Picture of Bob">
+            </span>
+        </div>
+    </body>
+
+</html>

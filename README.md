@@ -1,2 +1,2 @@
 # EasyRSA
-RSA encryption demo
+RSA encryption demo made using plain HTML, CSS, JavaScript
